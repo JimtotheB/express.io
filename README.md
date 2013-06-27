@@ -76,6 +76,7 @@ Or put your routes into a separate file for that nice and tidy look
 ```js
 //in app.js pass in "app" so you can use it anywhere.
 var realtime = require('./realtime')(app)
+app.io.route('ready', realtime.ready )
 
 //in realtime.js
 module.exports = function(app){
