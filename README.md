@@ -72,7 +72,24 @@ app.io.route('my-realtime-route', function(req) {
     // respond to the event
 });
 ```
+Or put your routes into a separate file for that nice and tidy look
+```js
+//in app.js pass in "app" so you can use it anywhere.
+var realtime = require('./realtime')(app)
 
+//in realtime.js
+module.exports = function(app){
+    return {
+        ready: function(req) {
+            req.io.emit('lessClutter', {separate: "those concerns"})
+        },
+        
+        set: function(req){
+            app.io.broadcast('talkToServer', {to: "Everyone."})
+        }
+    }
+};
+```
 ## Automatic Session Support
 
 Sessions work automatically, just set them up like normal using express.
