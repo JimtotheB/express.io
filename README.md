@@ -83,7 +83,6 @@ module.exports = function(app){
         ready: function(req) {
             req.io.emit('lessClutter', {separate: "those concerns"})
         },
-        
         set: function(req){
             app.io.broadcast('talkToServer', {to: "Everyone."})
         }
