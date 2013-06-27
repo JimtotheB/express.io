@@ -1,4 +1,3 @@
-
 # API Reference
 
 This gives details on the new top level objects for __express.io__.   
@@ -38,6 +37,14 @@ app.io.room('hipster').broadcast('meh', {this: 'goes to all hipsters'})
 app.io.route('special', function(req) {
     // do something with req
 })
+```
+
+You can also access all of the socket.io sockets, an example to disconnect all clients before shutdown
+```js
+app.io.sockets.clients().forEach(function (socket) {
+        socket.disconnect();
+        logger.info(socket.username + ' disconnected for shutdown');
+});
 ```
 
 You can also use the `AppIO` object to configure your io server.  For available options, check [here](https://github.com/LearnBoost/Socket.IO/wiki/Configuring-Socket.IO).
